@@ -2,7 +2,7 @@ library(fixest)
 library(haven)
 
 # Setup data ----
-data = read_dta("angrist_krueger_mod.dta")
+data = read_dta("Labs/Lab-1/angrist_krueger_mod.dta")
 data$z = (data$qob == 1)
 data_1980 = subset(data, year == 1980)
 data_2000 = subset(data, year == 2000)
@@ -63,4 +63,5 @@ feols(
   lwage ~ pwage | yob | educ ~ z, 
   data = data_2000, vcov = "hc1"
 )
+
 
